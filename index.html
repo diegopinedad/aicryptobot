@@ -10,7 +10,7 @@
 :root{
 --neon-blue:#00BFFF;
 --neon-green:#00FF7F;
---dark:#0a0a0f;
+--dark:#000000;
 --dark2:#111118;
 --dark3:#1A1A2E;
 --metal:#1A1A1A;
@@ -162,7 +162,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
 <body>
 
 <nav>
-  <div class="nav-logo">Crypto<span>Bot</span>AI</div>
+  <div class="nav-logo" style="display:flex; align-items:center;"><img src="Logo AICRYPTOBOT (negro).png" alt="Logo" style="height:45px; margin-right:10px; filter: brightness(0) invert(1);"> AICRYPTO<span>BOT</span></div>
   <ul class="nav-links">
     <li><a href="#dashboard">Dashboard</a></li>
     <li><a href="#estrategia">Estrategia</a></li>
@@ -192,7 +192,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
   <div class="ticker-inner" id="ticker">
     <div class="ticker-item"><span class="ticker-label">BTC/USDT</span> <span class="ticker-val" id="btc-price">$--</span></div>
     <div class="ticker-item"><span class="ticker-label">PnL 6M</span> <span class="ticker-val">+77.0%</span></div>
-    <div class="ticker-item"><span class="ticker-label">Win Rate</span> <span class="ticker-val">41.2%</span></div>
+    <div class="ticker-item"><span class="ticker-label">Win Rate</span> <span class="ticker-val">38.6%</span></div>
     <div class="ticker-item"><span class="ticker-label">Estrategia</span> <span class="ticker-val">EMA 5/21 + EMA200</span></div>
     <div class="ticker-item"><span class="ticker-label">Timeframe</span> <span class="ticker-val">15 MIN</span></div>
     <div class="ticker-item"><span class="ticker-label">Take Profit</span> <span class="ticker-val">5%</span></div>
@@ -201,7 +201,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
     <!-- duplicado para loop continuo -->
     <div class="ticker-item"><span class="ticker-label">BTC/USDT</span> <span class="ticker-val">$--</span></div>
     <div class="ticker-item"><span class="ticker-label">PnL 6M</span> <span class="ticker-val">+77.0%</span></div>
-    <div class="ticker-item"><span class="ticker-label">Win Rate</span> <span class="ticker-val">41.2%</span></div>
+    <div class="ticker-item"><span class="ticker-label">Win Rate</span> <span class="ticker-val">38.6%</span></div>
     <div class="ticker-item"><span class="ticker-label">Estrategia</span> <span class="ticker-val">EMA 5/21 + EMA200</span></div>
     <div class="ticker-item"><span class="ticker-label">Timeframe</span> <span class="ticker-val">15 MIN</span></div>
     <div class="ticker-item"><span class="ticker-label">Take Profit</span> <span class="ticker-val">5%</span></div>
@@ -226,11 +226,11 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
       <div class="metric-card green">
         <div class="metric-label">PnL Total</div>
         <div class="metric-val green" id="dash-pnl">+77.0%</div>
-        <div class="metric-sub">Últimos 6 meses</div>
+        <div class="metric-sub">Últimos 12 meses</div>
       </div>
       <div class="metric-card blue">
         <div class="metric-label">Win Rate</div>
-        <div class="metric-val blue">41.2%</div>
+        <div class="metric-val blue">38.6%</div>
         <div class="metric-sub">58 trades / 6m</div>
       </div>
       <div class="metric-card gold">
@@ -328,7 +328,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
     <div class="strat-card">
       <div class="strat-name">● Bot Free — EMA 9/21 + EMA 200</div>
       <div class="strat-metrics">
-        <div class="strat-metric"><div class="strat-metric-label">PnL 6 meses</div><div class="strat-metric-val" style="color:var(--neon-green)">+25.5%</div></div>
+        <div class="strat-metric"><div class="strat-metric-label">PnL 12 meses</div><div class="strat-metric-val" style="color:var(--neon-green)">+25.5%</div></div>
         <div class="strat-metric"><div class="strat-metric-label">Win Rate</div><div class="strat-metric-val" style="color:var(--neon-blue)">38.3%</div></div>
         <div class="strat-metric"><div class="strat-metric-label">Take Profit</div><div class="strat-metric-val" style="color:#FFD700">3%</div></div>
         <div class="strat-metric"><div class="strat-metric-label">Stop Loss</div><div class="strat-metric-val" style="color:#ff4444">1.5%</div></div>
@@ -337,8 +337,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
     <div class="strat-card" style="border-color:rgba(0,255,127,0.2)">
       <div class="strat-name" style="color:var(--neon-green)">★ Bot Pro — EMA 5/21 + EMA200 + Stoch</div>
       <div class="strat-metrics">
-        <div class="strat-metric"><div class="strat-metric-label">PnL 6 meses</div><div class="strat-metric-val" style="color:var(--neon-green)">+77.0%</div></div>
-        <div class="strat-metric"><div class="strat-metric-label">Win Rate</div><div class="strat-metric-val" style="color:var(--neon-blue)">41.2%</div></div>
+        <div class="strat-metric"><div class="strat-metric-label">PnL 12 meses</div><div class="strat-metric-val" style="color:var(--neon-green)">+77.0%</div></div>
+        <div class="strat-metric"><div class="strat-metric-label">Win Rate</div><div class="strat-metric-val" style="color:var(--neon-blue)">38.6%</div></div>
         <div class="strat-metric"><div class="strat-metric-label">Take Profit</div><div class="strat-metric-val" style="color:#FFD700">5%</div></div>
         <div class="strat-metric"><div class="strat-metric-label">Stop Loss</div><div class="strat-metric-val" style="color:#ff4444">1%</div></div>
       </div>
@@ -448,9 +448,9 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
   <div style="max-width:700px;margin:0 auto">
     <div class="section-label" style="text-align:center">Descarga gratuita</div>
     <h2 class="section-title" style="text-align:center">Empieza hoy mismo</h2>
-    <p style="color:var(--text-muted);margin:1rem 0 2rem;line-height:1.8">El bot Free incluye la estrategia EMA 9/21 con filtro EMA 200, validada con +25.5% en 6 meses de backtesting. Incluye guía paso a paso.</p>
+    <p style="color:var(--text-muted);margin:1rem 0 2rem;line-height:1.8">El bot Free incluye la estrategia EMA 9/21 con filtro EMA 200, validada con +25.5% en 12 meses de backtesting. Incluye guía paso a paso.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="bot_trading.py" download class="btn-primary">⬇ Descargar bot_trading.py</a>
+      <a href="free_bot.py" download class="btn-primary">⬇ Descargar free_bot.py</a>
       <a href="#como-funciona" class="btn-secondary">Ver guía de instalación</a>
     </div>
     <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1.5rem">Python 3.11+ requerido &nbsp;·&nbsp; Windows / Mac / Linux &nbsp;·&nbsp; 100% gratuito</p>
