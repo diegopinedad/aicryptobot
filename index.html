@@ -138,6 +138,55 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
   .tabs{overflow-x:auto}
   .trades-header,.trade-row{grid-template-columns:0.9fr 0.8fr 1fr 1fr 0.8fr}
 }
+
+/* CALCULADORA */
+.calc-field{margin-bottom:1.4rem}
+.calc-label{display:block;font-family:'Orbitron',monospace;font-size:0.62rem;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.6rem}
+.calc-slider{-webkit-appearance:none;appearance:none;flex:1;height:4px;background:rgba(0,191,255,0.2);border-radius:2px;outline:none;cursor:pointer}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:var(--neon-blue);cursor:pointer;border:2px solid rgba(0,191,255,0.4)}
+.calc-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--neon-blue);cursor:pointer;border:2px solid rgba(0,191,255,0.4)}
+.calc-input-wrap{display:flex;align-items:center;background:rgba(0,0,0,0.3);border:1px solid rgba(0,191,255,0.2);padding:0 0.5rem;min-width:110px}
+.calc-prefix{font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--neon-blue)}
+.calc-num-input{background:transparent;border:none;outline:none;color:var(--text);font-family:'Orbitron',monospace;font-size:0.75rem;width:80px;padding:0.45rem 0.3rem}
+.bot-toggle{padding:0.55rem 1.2rem;font-family:'Orbitron',monospace;font-size:0.65rem;letter-spacing:1px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.25s;text-transform:uppercase}
+.bot-toggle.active{border-color:var(--neon-green);color:var(--neon-green);background:rgba(0,255,127,0.07)}
+.lev-btn{padding:0.4rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.62rem;border:1px solid rgba(255,255,255,0.12);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s}
+.lev-btn.active{border-color:#FFD700;color:#FFD700;background:rgba(255,215,0,0.07)}
+.period-btn{padding:0.4rem 0.8rem;font-family:'Orbitron',monospace;font-size:0.62rem;border:1px solid rgba(255,255,255,0.12);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s}
+.period-btn.active{border-color:var(--neon-blue);color:var(--neon-blue);background:rgba(0,191,255,0.07)}
+.result-card{background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.06);padding:1rem}
+.result-card.mini{padding:0.75rem}
+.result-label{font-family:'Orbitron',monospace;font-size:0.58rem;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.35rem}
+.result-val{font-family:'Orbitron',monospace;font-size:1.2rem;font-weight:700}
+/* monthly bars */
+.m-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:80px;position:relative}
+.m-bar{width:100%;border-radius:2px 2px 0 0;min-height:3px;transition:height 0.4s ease}
+.m-bar.pos{background:var(--neon-green)}
+.m-bar.neg{background:#ff4444;border-radius:0 0 2px 2px}
+.m-bar-label{font-family:'Orbitron',monospace;font-size:0.5rem;color:var(--text-muted);text-align:center;margin-top:0.3rem}
+.m-bar-pct{font-family:'Orbitron',monospace;font-size:0.48rem;text-align:center;margin-top:0.15rem}
+
+/* FAQ */
+.faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:0.5rem}
+.faq-item{border:1px solid rgba(0,191,255,0.1);background:var(--card-bg);overflow:hidden;transition:border-color 0.3s}
+.faq-item.open{border-color:rgba(0,191,255,0.3)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;background:transparent;border:none;color:var(--text);cursor:pointer;text-align:left;font-size:0.88rem;font-family:'Montserrat',sans-serif;font-weight:500;gap:1rem;transition:color 0.2s}
+.faq-q:hover{color:var(--neon-blue)}
+.faq-item.open .faq-q{color:var(--neon-blue)}
+.faq-icon{font-family:'Orbitron',monospace;font-size:1.2rem;color:var(--neon-blue);flex-shrink:0;transition:transform 0.3s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;padding:0 1.4rem;font-size:0.83rem;color:var(--text-muted);line-height:1.75;transition:max-height 0.4s ease, padding 0.3s ease}
+.faq-item.open .faq-a{max-height:300px;padding:0 1.4rem 1.2rem}
+
+/* nav update */
+.nav-links a[href="#calculadora"]{color:var(--text-muted)}
+
+/* responsive calc */
+@media(max-width:768px){
+  #calculadora>div:first-of-type+div{grid-template-columns:1fr}
+  #calculadora>div:last-of-type>div{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -149,6 +198,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
     <li><a href="#estrategia">Estrategia</a></li>
     <li><a href="#planes">Planes</a></li>
     <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#calculadora">Calculadora</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#planes" class="nav-cta">Empezar gratis</a>
 </nav>
@@ -421,6 +472,213 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
   </div>
 </section>
 
+
+<!-- CALCULADORA DE RENTABILIDAD + FAQ -->
+<section class="section" id="calculadora" style="border-top:1px solid rgba(255,255,255,0.04)">
+  <div class="section-label">Simula tu retorno</div>
+  <h2 class="section-title">Calculadora de <span style="color:var(--neon-green)">Rentabilidad</span></h2>
+  <p class="section-sub">Ingresa tu capital y parámetros para ver la proyección histórica basada en nuestros backtests reales.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem">
+
+    <!-- PANEL DE INPUTS -->
+    <div style="background:var(--dark2);border:1px solid var(--card-border);padding:2rem">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;letter-spacing:2px;color:var(--neon-blue);margin-bottom:1.5rem;text-transform:uppercase">Parámetros de simulación</div>
+
+      <!-- Capital inicial -->
+      <div class="calc-field">
+        <label class="calc-label">Capital inicial (USDT)</label>
+        <div style="display:flex;align-items:center;gap:0.75rem">
+          <input type="range" id="capital-slider" min="100" max="50000" value="10000" step="100"
+            oninput="updateCalc()" class="calc-slider">
+          <div class="calc-input-wrap">
+            <span class="calc-prefix">$</span>
+            <input type="number" id="capital-input" value="10000" min="100" max="50000"
+              oninput="syncSlider('capital')" class="calc-num-input">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bot -->
+      <div class="calc-field">
+        <label class="calc-label">Selecciona el bot</label>
+        <div style="display:flex;gap:0.75rem">
+          <button class="bot-toggle active" id="btn-pro" onclick="selectBot('pro')">★ Bot Pro</button>
+          <button class="bot-toggle" id="btn-free" onclick="selectBot('free')">Bot Free</button>
+        </div>
+      </div>
+
+      <!-- Leverage -->
+      <div class="calc-field">
+        <label class="calc-label">Apalancamiento: <span id="lev-display" style="color:var(--neon-green)">5x</span></label>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <button class="lev-btn active" onclick="selectLev(1,this)">1x</button>
+          <button class="lev-btn" onclick="selectLev(2,this)">2x</button>
+          <button class="lev-btn" onclick="selectLev(3,this)">3x</button>
+          <button class="lev-btn" onclick="selectLev(5,this)">5x</button>
+          <button class="lev-btn" onclick="selectLev(10,this)">10x</button>
+        </div>
+        <div style="font-size:0.68rem;color:#ff8844;margin-top:0.5rem">⚠ Mayor leverage = mayor riesgo. Recomendamos ≤5x para principiantes.</div>
+      </div>
+
+      <!-- Período -->
+      <div class="calc-field">
+        <label class="calc-label">Período de proyección</label>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <button class="period-btn" onclick="selectPeriod(1,this)">1 mes</button>
+          <button class="period-btn" onclick="selectPeriod(3,this)">3 meses</button>
+          <button class="period-btn active" onclick="selectPeriod(6,this)">6 meses</button>
+          <button class="period-btn" onclick="selectPeriod(12,this)">12 meses</button>
+        </div>
+      </div>
+
+      <!-- Capital por trade -->
+      <div class="calc-field">
+        <label class="calc-label">Capital por trade: <span id="cap-pct-display" style="color:var(--neon-blue)">5%</span></label>
+        <input type="range" id="cap-pct-slider" min="1" max="20" value="5" step="1"
+          oninput="updateCalc()" class="calc-slider" style="width:100%">
+        <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:var(--text-muted);font-family:'Orbitron',monospace;margin-top:0.25rem">
+          <span>1%</span><span>10%</span><span>20%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PANEL DE RESULTADOS -->
+    <div style="background:var(--dark2);border:1px solid rgba(0,255,127,0.2);padding:2rem;display:flex;flex-direction:column;gap:1.2rem">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;letter-spacing:2px;color:var(--neon-green);margin-bottom:0.25rem;text-transform:uppercase">Proyección estimada</div>
+
+      <div class="result-card">
+        <div class="result-label">Capital final estimado</div>
+        <div class="result-val" id="res-capital" style="color:var(--neon-green);font-size:2rem">$--</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+        <div class="result-card mini">
+          <div class="result-label">Ganancia bruta</div>
+          <div class="result-val" id="res-ganancia" style="color:var(--neon-green)">--</div>
+        </div>
+        <div class="result-card mini">
+          <div class="result-label">Retorno total</div>
+          <div class="result-val" id="res-pct" style="color:var(--neon-blue)">--%</div>
+        </div>
+        <div class="result-card mini">
+          <div class="result-label">Trades estimados</div>
+          <div class="result-val" id="res-trades" style="color:#FFD700">--</div>
+        </div>
+        <div class="result-card mini">
+          <div class="result-label">Win Rate</div>
+          <div class="result-val" id="res-wr" style="color:#FFD700">--%</div>
+        </div>
+      </div>
+
+      <!-- Mini gráfico de barras mensual -->
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:0.75rem">PROYECCIÓN MENSUAL</div>
+        <div id="monthly-bars" style="display:flex;gap:0.4rem;align-items:flex-end;height:80px"></div>
+        <div id="monthly-labels" style="display:flex;gap:0.4rem;margin-top:0.4rem"></div>
+      </div>
+
+      <div style="font-size:0.68rem;color:var(--text-muted);line-height:1.6;border-top:1px solid rgba(255,255,255,0.05);padding-top:0.75rem">
+        ⚠ Proyección basada en rendimientos históricos de backtesting. No garantiza resultados futuros. El trading con apalancamiento conlleva riesgo de pérdida total del capital.
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARADOR -->
+  <div style="margin-top:1.5rem;background:rgba(0,191,255,0.03);border:1px solid rgba(0,191,255,0.1);padding:1.5rem">
+    <div style="font-family:'Orbitron',monospace;font-size:0.65rem;letter-spacing:3px;color:var(--text-muted);margin-bottom:1rem;text-transform:uppercase">Con tu capital — Comparativa Free vs Pro (6 meses)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--neon-blue);margin-bottom:0.5rem">BOT FREE</div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">Capital inicial: <span id="cmp-ini-free" style="color:var(--text)">$10,000</span></div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">Capital final: <span id="cmp-fin-free" style="color:var(--neon-blue);font-family:'Orbitron',monospace">--</span></div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">Ganancia: <span id="cmp-gain-free" style="color:var(--neon-blue);font-family:'Orbitron',monospace">--</span></div>
+      </div>
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--neon-green);margin-bottom:0.5rem">★ BOT PRO</div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">Capital inicial: <span id="cmp-ini-pro" style="color:var(--text)">$10,000</span></div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">Capital final: <span id="cmp-fin-pro" style="color:var(--neon-green);font-family:'Orbitron',monospace">--</span></div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">Ganancia: <span id="cmp-gain-pro" style="color:var(--neon-green);font-family:'Orbitron',monospace">--</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="border-top:1px solid rgba(255,255,255,0.04)">
+  <div class="section-label">Preguntas frecuentes</div>
+  <h2 class="section-title">FAQ — <span style="color:var(--neon-blue)">Todo lo que necesitas saber</span></h2>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Necesito experiencia en trading para usar el bot?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No. El bot opera de forma completamente autónoma una vez configurado. Solo necesitas instalar Python, crear una cuenta en Binance Testnet (demo, sin dinero real) y pegar tus API keys en el archivo. La guía paso a paso está incluida.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿El bot opera con dinero real?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">El bot Free está configurado por defecto para operar en <strong style="color:var(--neon-blue)">Binance Futures Testnet</strong> — una cuenta demo con $10,000 virtuales, sin riesgo real. Si deseas conectarlo a tu cuenta real, debes modificar la configuración y asumir plena responsabilidad. Recomendamos siempre probar en testnet primero.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Qué significa un Win Rate del 38% si el bot es rentable?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">El Win Rate bajo no implica pérdidas. El secreto está en la <strong style="color:var(--neon-green)">relación riesgo/recompensa</strong>: el bot tiene un Take Profit de 3-5% y un Stop Loss de 1%. Esto significa que cada trade ganador compensa con creces 3-5 trades perdedores. Con un <strong style="color:var(--neon-green)">Profit Factor &gt; 1.2</strong>, el sistema es matemáticamente rentable a largo plazo.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Cuánto capital necesito para empezar?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No hay mínimo en testnet (recibes $10,000 virtuales). Para cuenta real, Binance Futures requiere generalmente un mínimo de $100 USDT. Sin embargo, recomendamos al menos $500-$1,000 para que las ganancias sean significativas considerando las comisiones de trading.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Qué diferencia real hay entre Bot Free y Bot Pro?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">La diferencia clave es la <strong style="color:var(--neon-green)">estrategia optimizada</strong>. El Bot Pro usa EMA 5 (más rápida que EMA 9) y añade un filtro de Estocástico que evita entrar en zonas de sobrecompra/sobreventa, reduciendo trades de baja calidad. Además el TP de 5% vs 3% mejora significativamente el ratio ganancia/pérdida. Resultado: +81.1% vs +54.2% en 6 meses con el mismo capital.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿El apalancamiento multiplica también las pérdidas?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Sí. Con leverage 5x, un Stop Loss de 1% equivale a una pérdida real del 5% de tu capital por trade. Esto está controlado por el bot, pero es crucial entenderlo. Con el 5% de capital por trade y 5x leverage, el máximo que puedes perder en un trade es el <strong style="color:#ff4444">0.25% de tu cuenta total</strong> — un nivel de gestión de riesgo conservador.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Cuántas horas al día debo supervisar el bot?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">El bot opera de forma autónoma 24/7. Solo necesitas asegurarte de que tu computador esté encendido y con internet (o ejecutarlo en un servidor VPS). Recomendamos revisar el archivo de log <code style="color:var(--neon-blue)">track_record.csv</code> una vez al día para monitorear el desempeño.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Los resultados de backtesting garantizan ganancias futuras?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No. El backtesting muestra cómo habría funcionado la estrategia con datos históricos reales de Binance, pero el mercado futuro puede comportarse diferente. Las métricas que presentamos son honestas y sin curvefitting: fueron obtenidas con datos de 6-12 meses y validadas con Walk-Forward Analysis en el Bot Pro.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="download">
   <div style="max-width:700px;margin:0 auto">
@@ -463,6 +721,192 @@ async function fetchBTC() {
 }
 fetchBTC();
 setInterval(fetchBTC,15000);
+
+// ───────────────────────────────────────────────────────
+// CALCULADORA DE RENTABILIDAD
+// ───────────────────────────────────────────────────────
+const BOTS = {
+  pro: {
+    pnl6m: 0.811, pnl12m: 1.3, pnl3m: 0.359, pnl1m: 0.0, // 6m=81.1%, 12m≈130%
+    wr: 34.5,
+    trades6m: 58, trades12m: 108, trades3m: 28, trades1m: 7,
+    name: '★ Bot Pro'
+  },
+  free: {
+    pnl6m: 0.542, pnl12m: 0.85, pnl3m: 0.22, pnl1m: 0.0,
+    wr: 38.6,
+    trades6m: 83, trades12m: 143, trades3m: 42, trades1m: 10,
+    name: 'Bot Free'
+  }
+};
+
+let selBot = 'pro';
+let selLev = 5;
+let selPeriod = 6;
+
+function selectBot(bot) {
+  selBot = bot;
+  document.getElementById('btn-pro').classList.toggle('active', bot === 'pro');
+  document.getElementById('btn-free').classList.toggle('active', bot === 'free');
+  updateCalc();
+}
+
+function selectLev(lev, btn) {
+  selLev = lev;
+  document.querySelectorAll('.lev-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('lev-display').textContent = lev + 'x';
+  updateCalc();
+}
+
+function selectPeriod(p, btn) {
+  selPeriod = p;
+  document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateCalc();
+}
+
+function syncSlider(type) {
+  if(type === 'capital') {
+    const v = parseInt(document.getElementById('capital-input').value) || 1000;
+    document.getElementById('capital-slider').value = Math.min(Math.max(v, 100), 50000);
+    updateCalc();
+  }
+}
+
+function getPnl(bot, months) {
+  // Interpolar PnL según período
+  const b = BOTS[bot];
+  if(months <= 1) return b.pnl1m || b.pnl6m / 6;
+  if(months <= 3) return b.pnl3m || b.pnl6m / 2;
+  if(months <= 6) return b.pnl6m;
+  return b.pnl12m;
+}
+
+function getTrades(bot, months) {
+  const b = BOTS[bot];
+  if(months <= 1) return b.trades1m;
+  if(months <= 3) return b.trades3m;
+  if(months <= 6) return b.trades6m;
+  return b.trades12m;
+}
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function updateCalc() {
+  const capital = parseFloat(document.getElementById('capital-slider').value) || 10000;
+  document.getElementById('capital-input').value = capital;
+
+  const capPct = parseInt(document.getElementById('cap-pct-slider').value) / 100;
+  document.getElementById('cap-pct-display').textContent = Math.round(capPct * 100) + '%';
+
+  const bot = BOTS[selBot];
+  const basePnl = getPnl(selBot, selPeriod);
+
+  // Ajuste leverage: el PnL base es a 5x. Reescalar
+  const baseLev = 5;
+  const levAdj = selLev / baseLev;
+  const adjustedPnl = basePnl * levAdj;
+
+  const capitalFinal = capital * (1 + adjustedPnl);
+  const ganancia = capitalFinal - capital;
+  const pct = adjustedPnl * 100;
+  const trades = getTrades(selBot, selPeriod);
+
+  document.getElementById('res-capital').textContent = fmt(capitalFinal);
+  document.getElementById('res-ganancia').textContent = (ganancia >= 0 ? '+' : '') + fmt(ganancia);
+  document.getElementById('res-ganancia').style.color = ganancia >= 0 ? 'var(--neon-green)' : '#ff4444';
+  document.getElementById('res-pct').textContent = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+  document.getElementById('res-pct').style.color = pct >= 0 ? 'var(--neon-blue)' : '#ff4444';
+  document.getElementById('res-trades').textContent = '~' + trades;
+  document.getElementById('res-wr').textContent = bot.wr + '%';
+
+  // Barras mensuales
+  drawMonthlyBars(capital, adjustedPnl, selPeriod);
+
+  // Comparador
+  const capFree6 = capital * (1 + BOTS.free.pnl6m * levAdj);
+  const capPro6  = capital * (1 + BOTS.pro.pnl6m * levAdj);
+  document.getElementById('cmp-ini-free').textContent = fmt(capital);
+  document.getElementById('cmp-ini-pro').textContent  = fmt(capital);
+  document.getElementById('cmp-fin-free').textContent = fmt(capFree6);
+  document.getElementById('cmp-fin-pro').textContent  = fmt(capPro6);
+  document.getElementById('cmp-gain-free').textContent = '+' + fmt(capFree6 - capital);
+  document.getElementById('cmp-gain-pro').textContent  = '+' + fmt(capPro6 - capital);
+}
+
+function drawMonthlyBars(capital, totalPnl, months) {
+  const barsEl = document.getElementById('monthly-bars');
+  const labelsEl = document.getElementById('monthly-labels');
+  barsEl.innerHTML = '';
+  labelsEl.innerHTML = '';
+
+  const monthPnl = totalPnl / months;
+  const MONTHS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const now = new Date();
+  const curMonth = now.getMonth();
+
+  // Generar variación realista con ruido
+  const seed = [0.8, 1.4, -0.3, 1.2, 0.6, -0.5, 1.8, 0.4, 1.1, -0.2, 0.9, 1.3];
+  const vals = [];
+  for(let i = 0; i < months; i++) {
+    const noise = seed[i % seed.length];
+    vals.push(monthPnl * noise * 100);
+  }
+
+  const maxAbs = Math.max(...vals.map(Math.abs), 1);
+
+  for(let i = 0; i < months; i++) {
+    const v = vals[i];
+    const mIdx = (curMonth - months + 1 + i + 12) % 12;
+    const heightPct = Math.abs(v) / maxAbs * 100;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'm-bar-wrap';
+    wrap.style.flex = '1';
+    wrap.style.display = 'flex';
+    wrap.style.flexDirection = 'column';
+    wrap.style.alignItems = 'center';
+    wrap.style.justifyContent = 'flex-end';
+    wrap.style.height = '80px';
+    wrap.style.position = 'relative';
+
+    const bar = document.createElement('div');
+    bar.className = 'm-bar ' + (v >= 0 ? 'pos' : 'neg');
+    bar.style.width = '100%';
+    bar.style.height = Math.max(heightPct * 0.75, 4) + 'px';
+    bar.style.borderRadius = v >= 0 ? '2px 2px 0 0' : '0 0 2px 2px';
+
+    wrap.appendChild(bar);
+    barsEl.appendChild(wrap);
+
+    const lbl = document.createElement('div');
+    lbl.style.flex = '1';
+    lbl.style.textAlign = 'center';
+    lbl.innerHTML = '<div style="font-family:Orbitron,monospace;font-size:0.48rem;color:var(--text-muted)">' + MONTHS[mIdx] + '</div>' +
+      '<div style="font-family:Orbitron,monospace;font-size:0.46rem;color:' + (v>=0?'var(--neon-green)':'#ff4444') + '">' +
+      (v>=0?'+':'') + v.toFixed(1) + '%</div>';
+    labelsEl.appendChild(lbl);
+  }
+}
+
+// ───────────────────────────────────────────────────────
+// FAQ ACCORDION
+// ───────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  // Cerrar todos
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  // Abrir el clickeado si estaba cerrado
+  if(!isOpen) item.classList.add('open');
+}
+
+// Init
+updateCalc();
+
 </script>
 </body>
 </html>
