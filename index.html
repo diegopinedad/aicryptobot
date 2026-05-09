@@ -409,7 +409,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
       </tbody>
     </table>
   </div>
-  <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.8rem">* Resultados en Binance Futures Testnet con leverage 5x. Backtesting no garantiza resultados futuros.</p>
+  <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.8rem">* Resultados en Binance Futures Testnet. Backtesting no garantiza resultados futuros.</p>
 </section>
 
 <!-- PLANES -->
@@ -602,7 +602,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.05);paddi
         —
       </div>
       <div style="font-size:0.65rem;color:var(--text-muted);line-height:1.6;border-top:1px solid rgba(255,255,255,0.05);padding-top:0.75rem">
-        ⚠ Los PnL del backtesting ya incluyen leverage 5x. Al cambiar el leverage, el retorno se escala proporcionalmente. No garantiza resultados futuros.
+        ⚠ Los PnL del backtesting son rentabilidades brutas. El leverage multiplica el retorno pero también las pérdidas. No garantiza resultados futuros.
       </div>
     </div>
   </div>
@@ -810,17 +810,16 @@ function updateCalc() {
   const bot = BOTS[selBot];
   const basePnl = getPnl(selBot, selPeriod);
 
-  // Los PnL del backtester ya incluyen el leverage base de 5x.
-  // Para escalar a otro leverage: PnL_ajustado = PnL_base × (leverage_elegido / 5)
-  // Ejemplo: Bot Pro 6m con 5x → 0.770 × (5/5) = 77% sobre capital
-  //          Bot Pro 6m con 1x → 0.770 × (1/5) = 15.4% sobre capital
-  //          Bot Pro 6m con 10x→ 0.770 × (10/5) = 154% sobre capital
-  const baseLev = 5;
-  const levAdj = selLev / baseLev;
-  const adjustedPnl = basePnl * levAdj;
+  // PnL del backtester es BRUTO (sin leverage aplicado).
+  // Fórmula correcta: Capital Final = Capital × (1 + PnL_bruto × Leverage)
+  // Ejemplo Bot Pro 6m:
+  //   1x  → 10,000 × (1 + 0.77 × 1)  = $17,700
+  //   5x  → 10,000 × (1 + 0.77 × 5)  = $48,500
+  //   10x → 10,000 × (1 + 0.77 × 10) = $87,000
+  const adjustedPnl = basePnl * selLev;
 
-  const ganancia = capital * adjustedPnl;
-  const capitalFinal = capital + ganancia;
+  const capitalFinal = capital * (1 + adjustedPnl);
+  const ganancia = capitalFinal - capital;
   const pct = adjustedPnl * 100;
   const trades = getTrades(selBot, selPeriod);
 
@@ -835,7 +834,7 @@ function updateCalc() {
   // Nota explicativa dinámica
   const nota = document.getElementById('calc-nota');
   if(nota) {
-    nota.textContent = `Fórmula: $${capital.toLocaleString('en-US')} × ${(basePnl*100).toFixed(1)}% PnL base × (${selLev}x ÷ 5x base) = ${pct >= 0 ? '+' : ''}${pct.toFixed(1)}% retorno`;
+    nota.textContent = `Fórmula: $${capital.toLocaleString('en-US')} × (1 + ${(basePnl*100).toFixed(1)}% × ${selLev}x) = ${pct >= 0 ? '+' : ''}${pct.toFixed(1)}% retorno`;
   }
 
   // Barras mensuales
